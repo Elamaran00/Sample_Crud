@@ -1,0 +1,20 @@
+# Gradle
+.gradle/
+build/
+
+# Tomcat
+apache-tomcat-*/
+run_tomcat.ps1
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Open Liberty
+wlp/
+usr/servers/defaultServer/workarea/
+usr/servers/defaultServer/logs/
+
+# Mac
+.DS_Store

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'war'
+    id 'io.openliberty.tools.gradle.Liberty' version '3.8.2'
 }
 
 group = 'com.student.management'
@@ -9,6 +10,10 @@ version = '1.0-SNAPSHOT'
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+war {
+    archiveFileName = 'StudentManagementJSF.war'
 }
 
 repositories {
@@ -45,4 +50,10 @@ dependencies {
 
 test {
     useJUnit()
+}
+
+liberty {
+    server {
+        name = 'defaultServer'
+    }
 }
