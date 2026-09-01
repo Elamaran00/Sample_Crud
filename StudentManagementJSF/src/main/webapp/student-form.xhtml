@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Add/Edit Student - Student Management</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <header>
+        <h1>Student Management JSF</h1>
+        <nav>
+            <h:form style="display:inline;">
+                <h:commandLink value="Dashboard" action="dashboard?faces-redirect=true" />
+                <h:commandLink value="Students" action="students?faces-redirect=true" />
+                <h:commandLink value="Add Student" action="#{studentBean.prepareCreate}" />
+                <h:commandLink value="Profile" action="profile?faces-redirect=true" />
+                <h:commandLink value="Logout" action="#{loginBean.logout}" />
+            </h:form>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 600px;">
+        <h2>#{empty studentBean.currentStudent.id ? 'Add New Student' : 'Edit Student'}</h2>
+        
+        <h:form id="studentForm">
+            <h:messages globalOnly="true" class="error-msg" />
+            
+            <div class="form-group">
+                <h:outputLabel for="studentId" value="Student ID:" />
+                <h:inputText id="studentId" value="#{studentBean.currentStudent.studentId}" required="true" requiredMessage="Student ID is required." />
+                <h:message for="studentId" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="firstName" value="First Name:" />
+                <h:inputText id="firstName" value="#{studentBean.currentStudent.firstName}" required="true" requiredMessage="First name is required." />
+                <h:message for="firstName" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="lastName" value="Last Name:" />
+                <h:inputText id="lastName" value="#{studentBean.currentStudent.lastName}" required="true" requiredMessage="Last name is required." />
+                <h:message for="lastName" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" value="#{studentBean.currentStudent.email}" required="true" requiredMessage="Email is required.">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </h:inputText>
+                <h:message for="email" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="phone" value="Phone:" />
+                <h:inputText id="phone" value="#{studentBean.currentStudent.phone}" />
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="dateOfBirth" value="Date of Birth (yyyy-MM-dd):" />
+                <h:inputText id="dateOfBirth" value="#{studentBean.currentStudent.dateOfBirth}">
+                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                </h:inputText>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="gender" value="Gender:" />
+                <h:selectOneMenu id="gender" value="#{studentBean.currentStudent.gender}">
+                    <f:selectItem itemLabel="Male" itemValue="Male" />
+                    <f:selectItem itemLabel="Female" itemValue="Female" />
+                    <f:selectItem itemLabel="Other" itemValue="Other" />
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="department" value="Department:" />
+                <h:selectOneMenu id="department" value="#{studentBean.currentStudent.department}" required="true" requiredMessage="Department is required.">
+                    <f:selectItem itemLabel="Select Department" itemValue="" />
+                    <f:selectItem itemLabel="Computer Science" itemValue="Computer Science" />
+                    <f:selectItem itemLabel="Information Technology" itemValue="Information Technology" />
+                    <f:selectItem itemLabel="Mechanical Engineering" itemValue="Mechanical Engineering" />
+                    <f:selectItem itemLabel="Electrical Engineering" itemValue="Electrical Engineering" />
+                    <f:selectItem itemLabel="Civil Engineering" itemValue="Civil Engineering" />
+                </h:selectOneMenu>
+                <h:message for="department" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="course" value="Course:" />
+                <h:inputText id="course" value="#{studentBean.currentStudent.course}" required="true" requiredMessage="Course is required." />
+                <h:message for="course" class="error-msg" />
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="year" value="Year:" />
+                <h:inputText id="year" value="#{studentBean.currentStudent.year}" required="true" requiredMessage="Year is required." />
+                <h:message for="year" class="error-msg" />
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="status" value="Status:" />
+                <h:selectOneMenu id="status" value="#{studentBean.currentStudent.status}">
+                    <f:selectItem itemLabel="ACTIVE" itemValue="ACTIVE" />
+                    <f:selectItem itemLabel="INACTIVE" itemValue="INACTIVE" />
+                    <f:selectItem itemLabel="GRADUATED" itemValue="GRADUATED" />
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="form-group" style="margin-top: 20px;">
+                <h:commandButton value="Save" action="#{studentBean.saveStudent}" styleClass="btn" />
+                <h:commandButton value="Cancel" action="students?faces-redirect=true" immediate="true" styleClass="btn btn-danger" style="margin-left: 10px;" />
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

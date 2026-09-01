@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Profile - Student Management</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <header>
+        <h1>Student Management JSF</h1>
+        <nav>
+            <h:form style="display:inline;">
+                <h:commandLink value="Dashboard" action="dashboard?faces-redirect=true" />
+                <h:commandLink value="Students" action="students?faces-redirect=true" />
+                <h:commandLink value="Add Student" action="#{studentBean.prepareCreate}" />
+                <h:commandLink value="Profile" action="profile?faces-redirect=true" />
+                <h:commandLink value="Logout" action="#{loginBean.logout}" />
+            </h:form>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Admin Profile</h2>
+        <div style="background: white; padding: 20px; box-shadow: 0 0 5px #ccc; max-width: 400px;">
+            <p><strong>Username:</strong> admin</p>
+            <p><strong>Role:</strong> Administrator</p>
+            <p><strong>System Status:</strong> Active</p>
+        </div>
+    </div>
+</h:body>
+</html>

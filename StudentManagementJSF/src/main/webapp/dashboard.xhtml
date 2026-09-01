@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Dashboard - Student Management</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <header>
+        <h1>Student Management JSF</h1>
+        <nav>
+            <h:form style="display:inline;">
+                <h:commandLink value="Dashboard" action="dashboard?faces-redirect=true" />
+                <h:commandLink value="Students" action="students?faces-redirect=true" />
+                <h:commandLink value="Add Student" action="#{studentBean.prepareCreate}" />
+                <h:commandLink value="Profile" action="profile?faces-redirect=true" />
+                <h:commandLink value="Logout" action="#{loginBean.logout}" />
+            </h:form>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Dashboard</h2>
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Total Students</h3>
+                <h2><h:outputText value="#{studentBean.totalStudents}" /></h2>
+            </div>
+            <div class="card">
+                <h3>Active Students</h3>
+                <h2><h:outputText value="#{studentBean.activeStudents}" /></h2>
+            </div>
+            <div class="card">
+                <h3>Inactive Students</h3>
+                <h2><h:outputText value="#{studentBean.inactiveStudents}" /></h2>
+            </div>
+            <div class="card">
+                <h3>Total Departments</h3>
+                <h2><h:outputText value="#{studentBean.totalDepartments}" /></h2>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>
